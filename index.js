@@ -194,7 +194,7 @@ const userProvidesLeadSource = async (req) => {
 
     transcript.push({
         user: `${queryText}\n`,
-        SmartBox_Agent: 'Sounds good. Can I help with anything else?\n',
+        SmartBox_Agent: 'Sounds good. Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>\n',
         date: `${tDate.toLocaleString('en', { timeZone: 'Asia/Kolkata' })}\n`
     });
 
@@ -236,7 +236,7 @@ const userProvidesLeadSource = async (req) => {
     }
 
     return {
-        fulfillmentText: 'Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000:: Can I help with anything else?'
+        fulfillmentText: 'Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000:: Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>'
     };
 };
 
@@ -263,7 +263,7 @@ const userProvidesLastnameNumberPC = async (req) => {
 
     transcript.push({
         user: `${queryText}\n`,
-        SmartBox_Agent: 'Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000::Can I help with anything else?\n',
+        SmartBox_Agent: 'Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000::Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>\n',
         date: `${tDate.toLocaleString('en', { timeZone: 'Asia/Kolkata' })}\n`
     });
 
@@ -306,7 +306,7 @@ const userProvidesLastnameNumberPC = async (req) => {
     let awaitFirstnamePC = `${session}/contexts/await-pc-first-name`;
 
     return {
-        fulfillmentText: 'Thank you! I will have our patient coordinator call you ASAP.::next-2000::Can I help with anything else?',
+        fulfillmentText: 'Thank you! I will have our patient coordinator call you ASAP.::next-2000::Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>',
         outputContexts: [{
             name: awaitFirstnamePC,
             lifespanCount: 0

@@ -443,7 +443,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
     let outString = '';
 
     if (first_name === undefined) {
-        outString += `Sure, I can help you with that. To get started, what is your first name?`;
+        outString += `Sure, I can help you with that.::next-2000::To get started, what is your first name?`;
         let awaitFirstnameD = `${session}/contexts/await-first-name-d`;
         let oc = [{
             name: awaitFirstnameD,
@@ -517,7 +517,7 @@ const checkLastnameNumberUPPType = (req) => {
             transcript: transcript
         }, false, oc);
     } else {
-        outString += `Thank you! ::next-1000:: May I also have your email for correspondence?`;
+        outString += `Thank you! ::next-1000:: What is your email address for correspondence?`;
         let awaitEmail = `${session}/contexts/await-email`;
         let awaitLastnameNumber = `${session}/contexts/await-lastname-number`;
         let oc = [{

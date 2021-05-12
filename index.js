@@ -337,7 +337,7 @@ const userProvideFirstnamePC = async (req) => {
     let outString = '';
 
     if (first_name === undefined) {
-        outString += `Great! I just need your contact information and have our patient coordinator call you. ::next-2000::Before we start please tell me your last name.`;
+        outString += `Great! I just need your contact information and have our patient coordinator call you. ::next-2000::Before we start please tell me your first name.`;
         return utteranceTranscript({
             fulfillmentText: outString,
             queryText: queryText,

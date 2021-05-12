@@ -306,7 +306,7 @@ const userProvidesLastnameNumberPC = async (req) => {
     let awaitFirstnamePC = `${session}/contexts/await-pc-first-name`;
 
     return {
-        fulfillmentText: 'Sounds good. Can I help with anything else?',
+        fulfillmentText: 'Thank you! I will have our patient coordinator contact you ASAP.::next-2000::Can I help with anything else?',
         outputContexts: [{
             name: awaitFirstnamePC,
             lifespanCount: 0

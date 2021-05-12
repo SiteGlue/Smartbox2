@@ -159,7 +159,7 @@ const userProvidesAppointmentType = (req) => {
         }
     });
 
-    let outString = `Got that ${first_name}! Are you a new or existing patient?`;
+    let outString = `Got that ${first_name}! Are you a new or existing patient?<button type="button" class"quick_reply">New Patient</button><button type="button" class"quick_reply">Existing Patient</button>`;
 
     return utteranceTranscript({
         fulfillmentText: outString,
@@ -236,7 +236,7 @@ const userProvidesLeadSource = async (req) => {
     }
 
     return {
-        fulfillmentText: 'Sounds good. Can I help with anything else?'
+        fulfillmentText: 'Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000:: Can I help with anything else?'
     };
 };
 
@@ -263,7 +263,7 @@ const userProvidesLastnameNumberPC = async (req) => {
 
     transcript.push({
         user: `${queryText}\n`,
-        SmartBox_Agent: 'Sounds good. Can I help with anything else?\n',
+        SmartBox_Agent: 'Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000::Can I help with anything else?\n',
         date: `${tDate.toLocaleString('en', { timeZone: 'Asia/Kolkata' })}\n`
     });
 
@@ -306,7 +306,7 @@ const userProvidesLastnameNumberPC = async (req) => {
     let awaitFirstnamePC = `${session}/contexts/await-pc-first-name`;
 
     return {
-        fulfillmentText: 'Thank you! I will have our patient coordinator contact you ASAP.::next-2000::Can I help with anything else?',
+        fulfillmentText: 'Thank you! I will have our patient coordinator call you ASAP.::next-2000::Can I help with anything else?',
         outputContexts: [{
             name: awaitFirstnamePC,
             lifespanCount: 0
@@ -337,7 +337,7 @@ const userProvideFirstnamePC = async (req) => {
     let outString = '';
 
     if (first_name === undefined) {
-        outString += `Great! I just need your contact information and have our patient coordinator call you. Before we start please tell me your name.`;
+        outString += `Great! I just need your contact information and have our patient coordinator call you. ::next-2000::Before we start please tell me your last name.`;
         return utteranceTranscript({
             fulfillmentText: outString,
             queryText: queryText,
@@ -387,7 +387,7 @@ const checkFirstNameAtDefaultWelcomeIntent = (req) => {
     let outString = '';
 
     if (first_name === undefined) {
-        outString += `Welcome to <%practice_name%>! I'm <%agent_name%>, the virtual assistant for our practice.::next-2000::I can help answer your questions To get started, what is your first name?`;
+        outString += `Welcome to <%practice_name%>! I'm <%agent_name%>, the virtual assistant for our practice.::next-2000::I can help answer your questions, schedule an appointment or connect you with our patient coordinator.::next-2000:: To get started, what is your first name?`;
         let awaitFirstname = `${session}/contexts/await-first-name`;
         let oc = [{
             name: awaitFirstname,
@@ -400,7 +400,7 @@ const checkFirstNameAtDefaultWelcomeIntent = (req) => {
             transcript: transcript
         }, false, oc);
     } else {
-        outString += `Thanks ${first_name}! May I help you schedule an appointment today?`;
+        outString += `Thanks ${first_name}!::next-1000:: May I help you schedule an appointment today?`;
         let awaitAC = `${session}/contexts/await-appointment-confirmatio`;
         let awaitFirstname = `${session}/contexts/await-first-name`;
         let oc = [{
@@ -456,7 +456,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else {
-        outString += `Sure ${first_name}! I can help you with that. What type of appointment do you need?`;
+        outString += `Sure ${first_name}! I can help you with schedule an appointment.::next-2000:: What type of appointment do you need?<button type="button" class"quick_reply">Next Available</button><button type="button" class"quick_reply">This Week</button><button type="button" class"quick_reply">This Month</button>`;
         let awaitAT = `${session}/contexts/await-appointment-type`;
         let awaitFirstnameD = `${session}/contexts/await-first-name-d`;
         let oc = [{
@@ -517,7 +517,7 @@ const checkLastnameNumberUPPType = (req) => {
             transcript: transcript
         }, false, oc);
     } else {
-        outString += `Thank you! May I also have your email for correspondence?`;
+        outString += `Thank you! ::next-1000:: May I also have your email for correspondence?`;
         let awaitEmail = `${session}/contexts/await-email`;
         let awaitLastnameNumber = `${session}/contexts/await-lastname-number`;
         let oc = [{

@@ -456,7 +456,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else {
-        outString += `Sure ${first_name}! I can help you with schedule an appointment.::next-2000:: What type of appointment do you need?<button type="button" class"quick_reply">Next Available</button><button type="button" class"quick_reply">This Week</button><button type="button" class"quick_reply">This Month</button>`;
+        outString += `Sure ${first_name}! I can help you with schedule an appointment.::next-2000:: When did you last see a dentist?<button type="button" class"quick_reply">6 months</button><button type="button" class"quick_reply">1 year</button><button type="button" class"quick_reply">More than a year</button>`;
         let awaitAT = `${session}/contexts/await-appointment-type`;
         let awaitFirstnameD = `${session}/contexts/await-first-name-d`;
         let oc = [{

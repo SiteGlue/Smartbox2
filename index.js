@@ -306,7 +306,7 @@ const userProvidesLastnameNumberPC = async (req) => {
     let awaitFirstnamePC = `${session}/contexts/await-pc-first-name`;
 
     return {
-        fulfillmentText: 'Thank you! I will have our patient coordinator call you ASAP.::next-2000::Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>',
+        fulfillmentText: 'Got it ${first_name}!::next-1000:: I will have our patient coordinator call you ASAP.::next-2000::Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>',
         outputContexts: [{
             name: awaitFirstnamePC,
             lifespanCount: 0
@@ -345,7 +345,7 @@ const userProvideFirstnamePC = async (req) => {
             transcript: transcript
         }, false);
     } else  if (last_name == undefined && phone === undefined) {
-        outString += `May I please have your last name and phone number for correspondence?`;
+        outString += `Thanks ${first_name}! ::next-1000::What is your last name and the best number for our patient coordinator to call you?`;
         let awaitLP = `${session}/contexts/await-pc-lastname-number`;
         let oc = [{
             name: awaitLP,
@@ -400,7 +400,7 @@ const checkFirstNameAtDefaultWelcomeIntent = (req) => {
             transcript: transcript
         }, false, oc);
     } else {
-        outString += `Thanks ${first_name}!::next-1000:: May I help you schedule an appointment today?`;
+        outString += `Thanks ${first_name}!::next-1000:: Can I help you schedule an appointment today?`;
         let awaitAC = `${session}/contexts/await-appointment-confirmatio`;
         let awaitFirstname = `${session}/contexts/await-first-name`;
         let oc = [{
@@ -500,7 +500,7 @@ const checkLastnameNumberUPPType = (req) => {
     let outString = '';
 
     if (last_name === undefined && phone === undefined) {
-        outString += `May I please have your last name and phone number to begin?`;
+        outString += `To get started, what is your last name and the best phone number to reach you?`;
         let awaitLastnameNumber = `${session}/contexts/await-lastname-number`;
         let awaitEmail = `${session}/contexts/await-email`;
         let oc = [{
@@ -517,7 +517,7 @@ const checkLastnameNumberUPPType = (req) => {
             transcript: transcript
         }, false, oc);
     } else {
-        outString += `Thank you! ::next-1000:: What is your email address for correspondence?`;
+        outString += `Thank you! ::next-1000:: We can confirm your appointment by email.::next-1000::What is your email address?`;
         let awaitEmail = `${session}/contexts/await-email`;
         let awaitLastnameNumber = `${session}/contexts/await-lastname-number`;
         let oc = [{

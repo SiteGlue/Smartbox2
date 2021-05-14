@@ -159,7 +159,7 @@ const userProvidesAppointmentType = (req) => {
         }
     });
 
-    let outString = `Got that ${first_name}! Are you a new or existing patient?<button type="button" class"quick_reply">New Patient</button><button type="button" class"quick_reply">Existing Patient</button>`;
+    let outString = `Thanks ${first_name}! ::next-1000::Are you a new or existing patient?<button type="button" class"quick_reply">New Patient</button><button type="button" class"quick_reply">Existing Patient</button>`;
 
     return utteranceTranscript({
         fulfillmentText: outString,

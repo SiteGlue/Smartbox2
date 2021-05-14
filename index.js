@@ -236,7 +236,7 @@ const userProvidesLeadSource = async (req) => {
     }
 
     return {
-        fulfillmentText: 'Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000:: Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>'
+        fulfillmentText: 'Thank you ${first_name}!::next-1000:: Expect a call from our patient coordinator to schedule your appointment.::next-2000:: Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>'
     };
 };
 
@@ -263,7 +263,7 @@ const userProvidesLastnameNumberPC = async (req) => {
 
     transcript.push({
         user: `${queryText}\n`,
-        SmartBox_Agent: 'Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000::Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>\n',
+        SmartBox_Agent: 'Thank you ${first_name}!::next-1000::Expect a call from our patient coordinator to schedule your appointment.::next-2000::Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>\n',
         date: `${tDate.toLocaleString('en', { timeZone: 'Asia/Kolkata' })}\n`
     });
 

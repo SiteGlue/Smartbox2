@@ -150,7 +150,7 @@ const checkLastnameNumberUPPType = (req) => {
     let outString = '';
 
     if (last_name === undefined && phone === undefined) {
-        outString += `To get started, what is your last name?`;
+        outString += `Thanks, what is your last name?`;
         let awaitLastname = `${session}/contexts/await-lastname`;
 
         let oc = [{
@@ -242,7 +242,7 @@ const userProvideFirstnamePC = async (req) => {
             transcript: transcript
         }, false, oc);
     } else if (last_name === undefined) {
-        outString += `Great! what is your last name?`;
+        outString += `Great! What is your last name?`;
         let awaitPCLastname = `${session}/contexts/await-pc-lastname`;
         let oc = [{
             name: awaitPCLastname,
@@ -401,7 +401,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else if (appt_type === undefined) {
-        outString += `Sounds good. I can help you schedule an appointment at <%practice_name%>.::next-2000:: What type of appointment do you need?<button type="button" class"quick_reply">Exam and Cleaning</button><button type="button" class"quick_reply">Tooth Pain</button><button type="button" class"quick_reply">Emergency</button><button type="button" class"quick_reply">Something Else</button>%disable`;
+        outString += `Sounds good. I can help you schedule an appointment at <%practice_name%>.::next-2000:: What type of appointment do you need?<button type="button" class"quick_reply">Exam and Cleaning</button><button type="button" class"quick_reply">Tooth Pain</button><button type="button" class"quick_reply">Emergency</button><button type="button" class"quick_reply">Something Else</button>`;
         let awaitAppointmentType = `${session}/contexts/await-appointment-type`;
         let oc = [{
             name: awaitAppointmentType,
@@ -414,7 +414,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else if (duration === undefined) {
-        outString += `Thanks ${first_name}! ::next-1000::When was your last see a dentist?<button type="button" class"quick_reply">6 months</button><button type="button" class"quick_reply">1 year</button><button type="button" class"quick_reply">More than a year</button>`;
+        outString += `Thanks ${first_name}! ::next-1000::When did you last see a dentist?<button type="button" class"quick_reply">6 months</button><button type="button" class"quick_reply">1 year</button><button type="button" class"quick_reply">More than a year</button>`;
         let awaitLastVisit = `${session}/contexts/await-last-visit`;
         let oc = [{
             name: awaitLastVisit,
@@ -427,7 +427,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else if (patient_type === undefined) {
-        outString += `Got that ${first_name}! Are you a new or existing patient?<button type="button" class"quick_reply">New Patient</button> <button type="button" class"quick_reply">Existing Patient</button>`;
+        outString += `Got that ${first_name}! ::next-1000::Are you a new or existing patient?<button type="button" class"quick_reply">New Patient</button> <button type="button" class"quick_reply">Existing Patient</button>`;
         let awaitPatientType = `${session}/contexts/await-patient-type`;
         let oc = [{
             name: awaitPatientType,
@@ -440,7 +440,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else if (last_name === undefined) {
-        outString += `May I please have your last name to begin?`;
+        outString += `May I please have your last name?`;
         let awaitLastname = `${session}/contexts/await-lastname`;
         let oc = [{
             name: awaitLastname,
@@ -466,7 +466,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else if (email === undefined) {
-        outString += `Thank you! May I also have your email for correspondence?`;
+        outString += `Thank you! What is your email address so we can confirm your appointment?`;
         let patientTypeContext = `${session}/contexts/`
         // Set patient type context
         if (patient_type === 'Existing Patient') {

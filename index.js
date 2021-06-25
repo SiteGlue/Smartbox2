@@ -232,7 +232,7 @@ const userProvideFirstnamePC = async (req) => {
             transcript: transcript
         }, false, oc);
     } else if (first_name === undefined) {
-        outString += `Great! I just need your contact information and have our patient coordinator call you. ::next-2000::Before we start please tell me your first name.`;
+        outString += `Great! I just need your contact information and have our patient coordinator call you. ::next-2000::Before we start, what your first name?`;
         let awaitFirstnamePC = `${session}/contexts/await-pc-first-name`;
         let oc = [{
             name: awaitFirstnamePC,
@@ -272,7 +272,7 @@ const userProvideFirstnamePC = async (req) => {
         }, false, oc);
     } else if (time === undefined) {
         if (String(phone).length < 10) {
-            outString += `Hey ${first_name}, please enter a valid 10 digit phone number.`;
+            outString += `Hey ${first_name}, I don't recognize that number. Please enter a valid 10 digit phone number.`;
             let awaitPhonePC = `${session}/contexts/await-phone-pc`
             let oc = [{
                 name: awaitPhonePC,
@@ -285,7 +285,7 @@ const userProvideFirstnamePC = async (req) => {
                 transcript: transcript
             }, false, oc);
         } else {
-            outString += `When is the best time to contact you?<button type="button" class"quick_reply">Morning</button><button type="button" class"quick_reply">Afternoon</button><button type="button" class"quick_reply">Evening</button>`;
+            outString += `When would you like our pateint coordinator to contact you?<button type="button" class"quick_reply">Morning</button><button type="button" class"quick_reply">Afternoon</button><button type="button" class"quick_reply">Evening</button>`;
             let patientTypeContext = `${session}/contexts/`
             // Set patient type context
             if (patient_type === 'Existing Patient') {
@@ -486,7 +486,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
     } else if (email === undefined) {
         // Check phone number
         if (String(phone).length < 10) {
-            outString += `Hey ${first_name}, please enter a valid 10 digit phone number.`;
+            outString += `Hey ${first_name}, I don't recognize that phone number. Please enter your 10 digit phone number.`;
             let awaitPhone = `${session}/contexts/await-phone`;
             let oc = [{
                 name: awaitPhone,

@@ -152,7 +152,7 @@ const checkLastnameNumberUPPType = (req) => {
     let outString = '';
 
     if (last_name === undefined && phone === undefined) {
-        outString += `To get started, what is your last name?`;
+        outString += `What is your last name?`;
         let awaitLastname = `${session}/contexts/await-lastname`;
 
         let oc = [{
@@ -166,7 +166,7 @@ const checkLastnameNumberUPPType = (req) => {
             transcript: transcript
         }, false, oc);
     } else {
-        outString += `Thank you! ::next-1000:: We can confirm your appointment by email.::next-1000::What is your email address?`;
+        outString += `Thank you! ::next-1000:: We can also confirm your appointment by email.::next-1000::What is your email address?`;
         let awaitLastnameNumber = `${session}/contexts/await-lastname-number`;
         let patientTypeContext = `${session}/contexts/`
         // Set patient type context
@@ -232,7 +232,7 @@ const userProvideFirstnamePC = async (req) => {
             transcript: transcript
         }, false, oc);
     } else if (first_name === undefined) {
-        outString += `Great! I just need your contact information and have our patient coordinator call you. ::next-2000::Before we start, what your first name?`;
+        outString += `Great! I just need your contact information so our patient coordinator call you. ::next-2000::To get started, what your first name?`;
         let awaitFirstnamePC = `${session}/contexts/await-pc-first-name`;
         let oc = [{
             name: awaitFirstnamePC,
@@ -245,7 +245,7 @@ const userProvideFirstnamePC = async (req) => {
             transcript: transcript
         }, false, oc);
     } else if (last_name === undefined) {
-        outString += `Great! what is your last name?`;
+        outString += `Great! What is your last name?`;
         let awaitPCLastname = `${session}/contexts/await-pc-lastname`;
         let oc = [{
             name: awaitPCLastname,
@@ -547,7 +547,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             }, false, oc);
         }
     } else {
-        outString += `Sounds good. Expect a call from our patient coordinator to schedule your appointment.::next-2000::Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>`;
+        outString += `Sounds good. Our patient coordinator will contact you to schedule your appointment.::next-2000::Can I help with anything else?<button type="button" class"quick_reply">Disconnect</button>`;
         return utteranceTranscript({
             fulfillmentText: outString,
             queryText: queryText,
@@ -578,7 +578,7 @@ const skipEmail = (req) => {
         }
     });
 
-    let outString = `Thanks ${first_name}! ::next-1000::When was your last see a dentist?<button type="button" class"quick_reply">6 months</button><button type="button" class"quick_reply">1 year</button><button type="button" class"quick_reply">More than a year</button>`;
+    let outString = `Thanks ${first_name}! ::next-1000::When did you last see a dentist?<button type="button" class"quick_reply">6 months</button><button type="button" class"quick_reply">1 year</button><button type="button" class"quick_reply">More than a year</button>`;
     let patientTypeContext = `${session}/contexts/`;
     // Set patient type context
     if (patient_type === 'Existing Patient') {

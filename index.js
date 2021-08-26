@@ -458,7 +458,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else if (last_name === undefined) {
-        outString += `May I please have your last name to begin?`;
+        outString += `Sounds good. What is your last name?`;
         let awaitLastname = `${session}/contexts/await-lastname`;
         let oc = [{
             name: awaitLastname,
@@ -471,7 +471,7 @@ const checkFirstNameUserChoosesAppointment = (req) => {
             transcript: transcript
         }, false, oc);
     } else if (phone === undefined) {
-        outString += `What is the best number to reach you?`;
+        outString += `What is the best phone number to reach you? (Please enter your 10 digit phone number)`;
         let awaitPhone = `${session}/contexts/await-phone`;
         let oc = [{
             name: awaitPhone,
